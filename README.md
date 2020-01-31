@@ -1,6 +1,6 @@
-# ADF4350
+# ADF4350 & ADF4351
 
-Communication library to interface with Analog Devices ADF4350 PLL IC.
+Communication library to interface with Analog Devices ADF4350 & ADF4351 PLL IC.
 
 ## Getting started
 
@@ -23,7 +23,7 @@ Full example code can be found in example directory. adf4350-advanced example ne
 
 ### Important note
 
-The ADF4350 works with 3.3V logic levels, not 5V. Be careful if you're using an Arduino Uno or similar!
+The ADF4350 works with 3.3V logic levels, not 5V. Be careful if you're using an Arduino Uno or similar! --> Use a voltage divider made up of 560Ohm and 1kOhm resistors.
 
 ## Implemented features
 
