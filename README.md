@@ -40,4 +40,4 @@ Functions you should use after consulting datasheet:
 * `ADF4350::rfEnable(bool rf)` -- enable/disable output on the main RF output.
 * `ADF4350::setRfPower(int pow)` -- `pow` should be 0, 1, 2, or 3, corresponding to -4, -1, 3, or 5 dBm.
 * `ADF4350::auxEnable(bool aux)` -- enable/disable output on the auxilary output.
-* `ADF4350::setAuxPower(int pow)` -- set auxiliary power output. Again, `pow` should be 0, 1, 2, or 3, corresponding to -4, -1, 3, or 5 dBm. 
+* `ADF4350::setAuxPower(int pow)` -- set auxiliary power output. Again, `pow` should be 0, 1, 2, or 3, corresponding to -4, -1, 2, or 5 dBm. 
