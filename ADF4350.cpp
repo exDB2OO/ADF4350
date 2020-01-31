@@ -20,9 +20,7 @@
 
 #include "Arduino.h"
 #include "SPI.h"
-#include <ADF4350.h>
-
-
+#include "ADF4350.h"
 
 /* CONSTRUCTOR */
 
@@ -35,7 +33,12 @@ ADF4350::ADF4350(byte ssPin) {
 }
 
 // Initializes a new ADF4350 object, with refClk (in Mhz), and initial frequency.
+#ifdef _ADF4351
+// DB2OO
+void ADF4350::initialize(long freq, int refClk = 25)
+#else
 void ADF4350::initialize(long freq, int refClk = 10)
+#endif
 {
 	SPI.begin();						  // Init SPI bus
 	SPI.setDataMode(SPI_MODE0);		   // CPHA = 0  Clock positive
@@ -54,6 +57,8 @@ void ADF4350::initialize(long freq, int refClk = 10)
 	_auxPower = 0;
 	_rfPower = 0;
 
+  // DB2OO: need to initialize R5 as well
+  ADF4350::setR5();
 	ADF4350::setFreq(freq);
 }
 
@@ -103,11 +108,20 @@ void ADF4350::setFreq(long freq)
 // updates registers, and writes values to PLL board
 void ADF4350::update()
 {
+#if 1
+    // DB2OO registers need to be set in the sequence R4, R3, R2, R1, R0
+  ADF4350::setR4();
+  ADF4350::setR3();
+  ADF4350::setR2();
+  ADF4350::setR1();
+  ADF4350::setR0();
+#else
 	ADF4350::setR0();
 	ADF4350::setR1();
 	ADF4350::setR2();
 	ADF4350::setR4();
 	ADF4350::setR3();
+#endif
 }
 
 void ADF4350::WriteRegister32(const uint32_t value)

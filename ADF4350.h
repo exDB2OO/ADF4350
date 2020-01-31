@@ -23,6 +23,9 @@
 
 #include "Arduino.h"
 
+// DB2OO: ADF4351 with 25 MHz clock
+#define _ADF4351
+
 class ADF4350
 {
 	public: 
